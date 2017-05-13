@@ -21,8 +21,8 @@ public class Terminal {
 
     public static void main(String[] args)  {
         try{
-            Terminal socketClientExample = new Terminal();
-            socketClientExample.run();
+            Terminal terminalSocket  = new Terminal();
+            terminalSocket.run();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParserConfigurationException e) {
@@ -41,28 +41,28 @@ public class Terminal {
     private void run() throws IOException, SAXException, ParserConfigurationException, ClassNotFoundException, InterruptedException, TransformerException {
         InetAddress host = InetAddress.getLocalHost();
         Socket socket;
-        ObjectOutputStream oos ;
-        ObjectInputStream ois ;
+        ObjectOutputStream objectOutputStream ;
+        ObjectInputStream objectInputStream ;
         XmlHandler xmlHandler = new XmlHandler();
         List transactionList = xmlHandler.parseXmlFile();
         Boolean connection = true;
         while (connection) {
             for (Object transactionObject : transactionList) {
-                socket = new Socket(host.getHostName(), 9876);
-                oos = new ObjectOutputStream(socket.getOutputStream());
+                socket = new Socket(host.getHostName(), 8080);
+                objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                 System.out.println("Sending request to Socket Server");
-                oos.writeObject(transactionObject);
-                oos.flush();
+                objectOutputStream.writeObject(transactionObject);
+                objectOutputStream.flush();
                 Transaction transaction = (Transaction)transactionObject;
                 //read the server response message
-                ois = new ObjectInputStream(socket.getInputStream());
-                String message = (String) ois.readObject();
+                objectInputStream = new ObjectInputStream(socket.getInputStream());
+                String message = (String) objectInputStream.readObject();
                 System.out.println("Message from server is : " + message);
                 XmlWriter xmlWriter = new XmlWriter();
                 xmlWriter.saveTransactionResult(transaction.getTransactionId() , message);
                 //close resources
-                //ois.close();
-                //oos.close();
+                objectInputStream.close();
+                objectOutputStream.close();
                 Thread.sleep(2500);
             }
             connection=false;

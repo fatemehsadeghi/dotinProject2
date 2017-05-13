@@ -33,9 +33,9 @@ public class BankSocketServer implements Runnable {
             throws DepositNotFoundException {
         String depositMapKey = null;
         Boolean aBoolean = false;
-        for (Object key : depositMap.keySet()) {
-            if (key.equals(transaction.getDeposit())) {
-                depositMapKey = (String) key;
+        for (Object keyMap : depositMap.keySet()) {
+            if (keyMap.equals(transaction.getDeposit())) {
+                depositMapKey = (String) keyMap;
                 aBoolean = true;
                 break;
             }
@@ -110,7 +110,7 @@ public class BankSocketServer implements Runnable {
         try {
             //parse a jsonFile and store the result to a keyMap
             depositMap = jsonHandler.parseJson();
-            int port = 9876;
+            int port = 8080;
             server = new ServerSocket(port);
             loggerMassage = "server created!";
             LogHandler logHandler = new LogHandler();
@@ -130,8 +130,8 @@ public class BankSocketServer implements Runnable {
                 socket = server.accept();
                 loggerMassage = "a terminal is connected!";
                 logHandler.writeToLogFile(loggerMassage);
-                ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-                transaction.Transaction transaction = (transaction.Transaction) ois.readObject();
+                ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+                Transaction transaction = (Transaction) objectInputStream.readObject();
                 //invoke calculator
                 BankSocketServer socketServerExample = new BankSocketServer();
                 responseToTerminal = socketServerExample.calculate(depositMap,transaction);
@@ -141,8 +141,8 @@ public class BankSocketServer implements Runnable {
                 System.out.print("this deposit not exist!");
                 responseToTerminal="this deposit not exist!";
             } catch (exceptions.InitialBalanceBiggerThanUpperBoundException e) {
-                System.out.println("cant do this ...");
-                 responseToTerminal= "cant do this ...";
+                System.out.println("InitialBalanceBiggerThanUpperBoundException");
+                 responseToTerminal= "InitialBalanceBiggerThanUpperBoundException";
             } catch (exceptions.NegativeInitialBalanceException e) {
                 System.out.println("initial balance is less than amount of withdraw");
                  responseToTerminal="initial balance is less than amount of withdraw";
@@ -156,13 +156,12 @@ public class BankSocketServer implements Runnable {
             }
             try{
                 assert socket != null;
-                ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-                oos.writeObject(responseToTerminal);
-                oos.flush();
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                objectOutputStream.writeObject(responseToTerminal);
+                objectOutputStream.flush();
                 loggerMassage = "send result to terminal";
                 LogHandler logHandler = new LogHandler();
                 logHandler.writeToLogFile(loggerMassage);
-                //ois.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
