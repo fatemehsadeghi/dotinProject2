@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2017-05-13T10:50:47</date>
+  <millis>1494656447000</millis>
+  <sequence>0</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>server created!</message>
+</record>
+<record>
+  <date>2017-05-13T10:50:47</date>
+  <millis>1494656447016</millis>
+  <sequence>1</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>waiting for terminal!</message>
+</record>
+<record>
+  <date>2017-05-13T10:50:55</date>
+  <millis>1494656455023</millis>
+  <sequence>2</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>a terminal is connected!</message>
+</record>
+<record>
+  <date>2017-05-13T10:50:55</date>
+  <millis>1494656455071</millis>
+  <sequence>3</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>send result to terminal</message>
+</record>
+<record>
+  <date>2017-05-13T10:50:55</date>
+  <millis>1494656455072</millis>
+  <sequence>4</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>waiting for terminal!</message>
+</record>
+<record>
+  <date>2017-05-13T10:50:57</date>
+  <millis>1494656457610</millis>
+  <sequence>5</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>a terminal is connected!</message>
+</record>
+<record>
+  <date>2017-05-13T10:50:57</date>
+  <millis>1494656457618</millis>
+  <sequence>6</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>successful</message>
+</record>
+<record>
+  <date>2017-05-13T10:50:57</date>
+  <millis>1494656457624</millis>
+  <sequence>7</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>send result to terminal</message>
+</record>
+<record>
+  <date>2017-05-13T10:50:57</date>
+  <millis>1494656457630</millis>
+  <sequence>8</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>waiting for terminal!</message>
+</record>
+<record>
+  <date>2017-05-13T10:53:11</date>
+  <millis>1494656591719</millis>
+  <sequence>9</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>a terminal is connected!</message>
+</record>
+<record>
+  <date>2017-05-13T10:53:11</date>
+  <millis>1494656591722</millis>
+  <sequence>10</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>send result to terminal</message>
+</record>
+<record>
+  <date>2017-05-13T10:53:11</date>
+  <millis>1494656591723</millis>
+  <sequence>11</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>waiting for terminal!</message>
+</record>
+<record>
+  <date>2017-05-13T10:53:14</date>
+  <millis>1494656594250</millis>
+  <sequence>12</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>a terminal is connected!</message>
+</record>
+<record>
+  <date>2017-05-13T10:53:14</date>
+  <millis>1494656594258</millis>
+  <sequence>13</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>successful</message>
+</record>
+<record>
+  <date>2017-05-13T10:53:14</date>
+  <millis>1494656594263</millis>
+  <sequence>14</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>send result to terminal</message>
+</record>
+<record>
+  <date>2017-05-13T10:53:14</date>
+  <millis>1494656594267</millis>
+  <sequence>15</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>waiting for terminal!</message>
+</record>
