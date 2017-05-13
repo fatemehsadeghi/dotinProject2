@@ -59,7 +59,7 @@ public class BankSocketServer implements Runnable {
             throw new InitialBalanceBiggerThanUpperBoundException();
         else {
             deposit.setInitialBalance(newInitialBalance);
-            System.out.println("new initial balance is " + newInitialBalance + ((Deposit) depositMap.get(depositMapKey)).getInitialBalance());
+            System.out.println("new initial balance is " + ((Deposit) depositMap.get(depositMapKey)).getInitialBalance());
         }
     }
     //subtract value of amount from initialBalance and check for non negative result
@@ -159,6 +159,7 @@ public class BankSocketServer implements Runnable {
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                 objectOutputStream.writeObject(responseToTerminal);
                 objectOutputStream.flush();
+                objectOutputStream.close();
                 loggerMassage = "send result to terminal";
                 LogHandler logHandler = new LogHandler();
                 logHandler.writeToLogFile(loggerMassage);
