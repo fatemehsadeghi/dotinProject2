@@ -4,7 +4,6 @@ import fileHandling.XmlWriter;
 import org.xml.sax.SAXException;
 import fileHandling.XmlHandler;
 import transaction.Transaction;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -13,6 +12,8 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Logger;
 
 public class Terminal {
@@ -46,6 +47,7 @@ public class Terminal {
         XmlHandler xmlHandler = new XmlHandler();
         List transactionList = xmlHandler.parseXmlFile();
         Boolean connection = true;
+        Map<String , String> resultMap = new TreeMap<String, String>();
         while (connection) {
             for (Object transactionObject : transactionList) {
                 socket = new Socket(host.getHostName(), 8080);
@@ -58,8 +60,7 @@ public class Terminal {
                 objectInputStream = new ObjectInputStream(socket.getInputStream());
                 String message = (String) objectInputStream.readObject();
                 System.out.println("Message from server is : " + message);
-                XmlWriter xmlWriter = new XmlWriter();
-                xmlWriter.saveTransactionResult(transaction.getTransactionId() , message);
+                resultMap.put(transaction.getTransactionId() , message);
                 //close resources
                 objectInputStream.close();
                 objectOutputStream.close();
@@ -67,6 +68,8 @@ public class Terminal {
             }
             connection=false;
         }
+        XmlWriter xmlWriter = new XmlWriter();
+        xmlWriter.saveTransactionResult((TreeMap) resultMap);
     }
 
 }
