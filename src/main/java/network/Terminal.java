@@ -1,6 +1,7 @@
 package network;
 
 import fileHandling.XmlWriter;
+import logHandling.LogHandler;
 import org.xml.sax.SAXException;
 import fileHandling.XmlHandler;
 import transaction.Transaction;
@@ -19,15 +20,8 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 public class Terminal {
-    /*
-    private static Logger clientLogger =
-            Logger.getLogger(Terminal.class.getName());
-    Logger clientLogger = Logger.getLogger(Terminal.class.getName());
-    File f = new File("LogFile2.log");
-    FileHandler fileLog = new FileHandler("LogFile2.log");
-    clientLogger.addHandler(fileLog);
-    serverLogger.info(message);
-*/
+    String logMessage;
+    LogHandler logHandler = new LogHandler();
     public static void main(String[] args)  {
         try{
             Terminal terminalSocket  = new Terminal();
@@ -59,8 +53,12 @@ public class Terminal {
         while (connection) {
             for (Object transactionObject : transactionList) {
                 socket = new Socket(host.getHostName(), 8080);
+                logMessage = "client is connecting!";
+                logHandler.writeToLogFile(logMessage);
                 objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                 System.out.println("Sending request to Socket Server");
+                logMessage = "Sending request to Socket Server";
+                logHandler.writeToLogFile(logMessage);
                 objectOutputStream.writeObject(transactionObject);
                 objectOutputStream.flush();
                 Transaction transaction = (Transaction)transactionObject;
@@ -68,6 +66,7 @@ public class Terminal {
                 objectInputStream = new ObjectInputStream(socket.getInputStream());
                 String message = (String) objectInputStream.readObject();
                 System.out.println("Message from server is : " + message);
+                logHandler.writeToLogFile(message);
                 resultMap.put(transaction.getTransactionId() , message);
                 //close resources
                 objectInputStream.close();
@@ -78,6 +77,8 @@ public class Terminal {
         }
         XmlWriter xmlWriter = new XmlWriter();
         xmlWriter.saveTransactionResult((TreeMap) resultMap);
+        logMessage = "write to XML File";
+        logHandler.writeToLogFile(logMessage);
     }
 
 }
