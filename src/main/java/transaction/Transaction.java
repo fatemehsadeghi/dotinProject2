@@ -15,9 +15,6 @@ public class Transaction implements Serializable {
         this.amount = amount;
         this.deposit = deposit;
     }
-
-    public Transaction() {
-    }
     public BigDecimal getAmount() {
         return amount;
     }

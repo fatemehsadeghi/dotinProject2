@@ -21,7 +21,7 @@ public class BankSocketServer implements Runnable {
     private static ServerSocket server;
     private BigDecimal newInitialBalance;
     private String responseToTerminal;
-    LogHandler logHandler = new LogHandler();
+    private LogHandler logHandler = new LogHandler();
     public static void main(String args[]) throws IOException, ParseException, InterruptedException {
         BankSocketServer socketServerExample=new BankSocketServer();
         Thread serverThread =new Thread(socketServerExample);
@@ -140,7 +140,7 @@ public class BankSocketServer implements Runnable {
         }
     }
       //manage tow part of calculation.deposit and withdraw
-      private String calculate(TreeMap depositMap, Transaction transaction) throws InitialBalanceBiggerThanUpperBoundException, DepositNotFoundException, NegativeInitialBalanceException, TransactionTypeNotFoundException, IOException {
+     private String calculate(TreeMap depositMap, Transaction transaction) throws InitialBalanceBiggerThanUpperBoundException, DepositNotFoundException, NegativeInitialBalanceException, TransactionTypeNotFoundException, IOException {
         String depositMapKey;
         String transactionType = transaction.getTransactionType();
         //invoke findDeposit for depositId

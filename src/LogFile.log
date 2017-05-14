@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2017-05-13T14:53:12</date>
+  <millis>1494670992009</millis>
+  <sequence>0</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>server created!</message>
+</record>
+<record>
+  <date>2017-05-13T14:53:12</date>
+  <millis>1494670992024</millis>
+  <sequence>1</sequence>
+  <logger>network.Terminal</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>9</thread>
+  <message>waiting for terminal!</message>
+</record>

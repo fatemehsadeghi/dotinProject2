@@ -17,7 +17,6 @@ public class JsonHandler {
         Object object = parser.parse(new FileReader("src\\core.json"));
         JSONObject jsonObject =(JSONObject)object;
         JSONArray depositsArray = (JSONArray)jsonObject.get("deposits");
-
         for (Object obj : depositsArray) {
             JSONObject depositJson = (JSONObject) obj;
             String customer = (String) depositJson.get("customer");
@@ -28,12 +27,10 @@ public class JsonHandler {
             BigDecimal upperBound = new BigDecimal(upperBoundStr);
             Deposit deposit = new Deposit(customer ,customerId,initialBalance,upperBound);
             depositMap.put(customerId , deposit);
-
         }
         return depositMap;
     }
     public static void main(String args[])throws Exception{
-
         JsonHandler jsonFileParser = new JsonHandler();
         jsonFileParser.parseJson();
     }

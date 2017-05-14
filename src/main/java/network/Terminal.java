@@ -7,7 +7,6 @@ import fileHandling.XmlHandler;
 import transaction.Transaction;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -16,12 +15,11 @@ import java.net.Socket;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
+
 
 public class Terminal {
     String logMessage;
-    LogHandler logHandler = new LogHandler();
+    private LogHandler logHandler = new LogHandler();
     public static void main(String[] args)  {
         try{
             Terminal terminalSocket  = new Terminal();

@@ -1,13 +1,10 @@
 package logHandling;
-
-import network.Terminal;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 public class LogHandler {
-    FileHandler fileLog;
-    public Integer fileSize=1024;
+    private FileHandler fileLog;
     public LogHandler(){
         try {
             createLogFile();
@@ -15,7 +12,7 @@ public class LogHandler {
             e.printStackTrace();
         }
     }
-    public void createLogFile() throws IOException {
+    private void createLogFile() throws IOException {
         fileLog = new FileHandler("LogFile.log");
     }
     public void writeToLogFile(String message) throws IOException {

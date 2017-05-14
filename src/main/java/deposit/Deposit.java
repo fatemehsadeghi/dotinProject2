@@ -16,15 +16,8 @@ public class Deposit implements Serializable {
         this.upperBound = upperBound;
     }
 
-    public Deposit() {
-    }
-
     public BigDecimal getUpperBound() {
         return upperBound;
-    }
-
-    public void setUpperBound(BigDecimal upperBound) {
-        this.upperBound = upperBound;
     }
 
     public BigDecimal getInitialBalance() {
@@ -35,19 +28,5 @@ public class Deposit implements Serializable {
         this.initialBalance = initialBalance;
     }
 
-    public String getCustomerId() {
-        return customerId;
-    }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
 }
