@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2017-05-21T16:04:12</date>
+  <millis>1495366452162</millis>
+  <sequence>0</sequence>
+  <logger>logHandling.LogHandler</logger>
+  <level>INFO</level>
+  <class>logHandling.LogHandler</class>
+  <method>writeToLogFile</method>
+  <thread>11</thread>
+  <message>successful</message>
+</record>
+</log>

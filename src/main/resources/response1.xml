@@ -2,7 +2,7 @@
 <Transactions>
     <transaction>
         <transactionId>1</transactionId>
-        <result>transactionType does not exist!</result>
+        <result>successful</result>
     </transaction>
     <transaction>
         <transactionId>2</transactionId>
@@ -13,7 +13,7 @@
 <Transactions>
     <transaction>
         <transactionId>1</transactionId>
-        <result>transactionType does not exist!</result>
+        <result>successful</result>
     </transaction>
     <transaction>
         <transactionId>2</transactionId>
@@ -24,18 +24,7 @@
 <Transactions>
     <transaction>
         <transactionId>1</transactionId>
-        <result>transactionType does not exist!</result>
-    </transaction>
-    <transaction>
-        <transactionId>2</transactionId>
         <result>successful</result>
-    </transaction>
-</Transactions>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Transactions>
-    <transaction>
-        <transactionId>1</transactionId>
-        <result>transactionType does not exist!</result>
     </transaction>
     <transaction>
         <transactionId>2</transactionId>

@@ -1,0 +1,32 @@
+{
+  "port": "8080",
+  "deposits": [
+    {
+      "customer" : "Reza Rezaei" ,
+      "id" : "35527439",
+      "initialBalance" : "0",
+      "upperBound" : "0"
+    },
+    {
+      "customer": "Ali Alavi"
+    , "id" : "33227781",
+      "initialBalance" : "1000",
+      "upperBound" : "1000000"
+
+    },
+    {
+      "customer" : " Rezaei" ,
+      "id" : "355274",
+      "initialBalance" : "100",
+      "upperBound" : "0"
+    },
+    {
+      "customer": " Alavi"
+    , "id" : "332277",
+      "initialBalance" : "1000",
+      "upperBound" : "1000000"
+
+    }
+  ],
+  "outLog" : "server.out"
+}

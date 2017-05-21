@@ -11,15 +11,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XmlHandler {
+public class XmlHandler  {
 
-    public List parseXmlFile(ArrayList<String> terminalAttributeList) throws ParserConfigurationException, IOException, SAXException {
+    public List parseXmlFile(ArrayList<String> terminalAttributeList , String terminalName) throws ParserConfigurationException, IOException, SAXException {
         List transactionList = new ArrayList();
-        File inputXmlFile = new File("src//terminal.xml");
+        File inputXmlFile = new File("src\\main\\resources\\"+terminalName+".xml");
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(inputXmlFile);
@@ -53,6 +54,7 @@ public class XmlHandler {
     public static void main(String args[]) throws  Exception{
         ArrayList <String> s = new ArrayList<String>();
         XmlHandler xmlHandler = new XmlHandler();
-        xmlHandler.parseXmlFile(s);
+        String terminalName=null;
+        xmlHandler.parseXmlFile(s , terminalName);
     }
 }

@@ -9,19 +9,27 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.TreeMap;
 
 public class JsonHandler {
     public static void main(String args[]) throws Exception {
-        JsonHandler jsonFileParser = new JsonHandler();
-        jsonFileParser.parseJson();
+      //  JsonHandler jsonFileParser = new JsonHandler();
+      //  int PORT=0;
+      //  jsonFileParser.parseJson(PORT);
     }
 
-    public TreeMap<String, Deposit> parseJson() throws IOException, ParseException {
+    public TreeMap<String, Deposit> parseJson(List serverAttribList) throws IOException, ParseException {
         TreeMap<String, Deposit> depositMap = new TreeMap<String, Deposit>();
         JSONParser parser = new JSONParser();
-        Object object = parser.parse(new FileReader("src\\core.json"));
+        Object object = parser.parse(new FileReader("C:\\Users\\dotinschool1\\Desktop\\dotinProject2\\src\\main\\resources\\core.json"));
         JSONObject jsonObject = (JSONObject) object;
+        String port = (String) jsonObject.get("port");
+        String outLog = (String) jsonObject.get("outLog");
+        serverAttribList.add(0,port);
+        serverAttribList.add(1,outLog);
+      // PORT=Integer.parseInt(port);
+        //System.out.println(PORT);
         JSONArray depositsArray = (JSONArray) jsonObject.get("deposits");
         for (Object obj : depositsArray) {
             JSONObject depositJson = (JSONObject) obj;
