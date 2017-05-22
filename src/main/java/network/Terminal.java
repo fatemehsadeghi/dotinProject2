@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 
-public class Terminal extends Thread {
+public class Terminal  {
     private List<String> logMessageList = new ArrayList<String>();
 
 
@@ -87,9 +87,9 @@ public class Terminal extends Thread {
         logMessage = "write to XML File";
         logMessageList.add(logMessage);
         logHandler.writeToLogFile(logMessage);
-        for (String aLogMessageList : logMessageList) {
-            logHandler.writeToLogFile(aLogMessageList);
-        }
+      //  for (String aLogMessageList : logMessageList) {
+       //     logHandler.writeToLogFile(aLogMessageList);
+      //  }
     }
 
 }

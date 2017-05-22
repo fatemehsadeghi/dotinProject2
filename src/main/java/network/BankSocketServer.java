@@ -81,7 +81,7 @@ public class BankSocketServer extends Thread {
                             e.printStackTrace();
                         } catch (DepositNotFoundException e) {
                             e.printStackTrace();
-                            responseToTerminal = "this deposit not exist!";
+                            responseToTerminal = "this deposit does not exist!";
                             System.out.println(responseToTerminal);
                         } catch (exceptions.InitialBalanceBiggerThanUpperBoundException e) {
                             responseToTerminal = "InitialBalanceBiggerThanUpperBoundException";
