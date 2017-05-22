@@ -1,16 +1,8 @@
 package transaction;
 
-import deposit.Deposit;
-import exceptions.DepositNotFoundException;
-import exceptions.InitialBalanceBiggerThanUpperBoundException;
-import exceptions.NegativeInitialBalanceException;
-import exceptions.TransactionTypeNotFoundException;
-import logHandling.LogHandler;
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.TreeMap;
+
 
 public class Transaction implements Serializable {
     private String transactionId;
@@ -24,7 +16,7 @@ public class Transaction implements Serializable {
         this.amount = amount;
         this.deposit = deposit;
     }
-   public Transaction(){}
+
 
     public BigDecimal getAmount() {
         return amount;

@@ -5,20 +5,20 @@ import exceptions.InitialBalanceBiggerThanUpperBoundException;
 import exceptions.NegativeInitialBalanceException;
 import exceptions.TransactionTypeNotFoundException;
 import logHandling.LogHandler;
+import org.json.simple.parser.ParseException;
 import transaction.Transaction;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.TreeMap;
 
-public class Deposit implements Serializable {
+public class Deposit {
     private String customer;
     private String customerId;
     private BigDecimal initialBalance;
     private BigDecimal upperBound;
     private BigDecimal newInitialBalance;
-    private LogHandler logHandler = new LogHandler();
 
     public Deposit() {
     }
@@ -30,15 +30,15 @@ public class Deposit implements Serializable {
         this.upperBound = upperBound;
     }
 
-    public BigDecimal getUpperBound() {
+    private BigDecimal getUpperBound() {
         return upperBound;
     }
 
-    public BigDecimal getInitialBalance() {
+    private BigDecimal getInitialBalance() {
         return initialBalance;
     }
 
-    public void setInitialBalance(BigDecimal initialBalance) {
+    private void setInitialBalance(BigDecimal initialBalance) {
         this.initialBalance = initialBalance;
     }
 
@@ -59,7 +59,7 @@ public class Deposit implements Serializable {
         return depositMapKey;
     }
 
-    private void calculateDeposit(TreeMap depositMap, String depositMapKey, Transaction transaction) throws InitialBalanceBiggerThanUpperBoundException, IOException {
+    private BigDecimal calculateDeposit(TreeMap depositMap, String depositMapKey, Transaction transaction) throws InitialBalanceBiggerThanUpperBoundException, IOException, ParseException {
         BigDecimal depositInitialBalance;
         Deposit deposit = (Deposit) depositMap.get(depositMapKey);
         depositInitialBalance = deposit.getInitialBalance();
@@ -68,11 +68,11 @@ public class Deposit implements Serializable {
             throw new InitialBalanceBiggerThanUpperBoundException();
         else {
             deposit.setInitialBalance(newInitialBalance);
-            //logHandler.writeToLogFile(String.valueOf(newInitialBalance));
         }
+        return newInitialBalance;
     }
 
-    private void calculateWithdraw(TreeMap depositMap, String depositMapKey, Transaction transaction) throws NegativeInitialBalanceException, IOException {
+    private BigDecimal calculateWithdraw(TreeMap depositMap, String depositMapKey, Transaction transaction) throws NegativeInitialBalanceException, IOException {
         BigDecimal depositInitialBalance;
         Deposit deposit = (Deposit) depositMap.get(depositMapKey);
         depositInitialBalance = deposit.getInitialBalance();
@@ -81,11 +81,14 @@ public class Deposit implements Serializable {
             throw new NegativeInitialBalanceException();
         else {
             deposit.setInitialBalance(newInitialBalance);
-            //  logHandler.writeToLogFile(String.valueOf(newInitialBalance));
         }
+        return newInitialBalance;
     }
 
-    public String calculate(TreeMap depositMap, Transaction transaction) throws InitialBalanceBiggerThanUpperBoundException, DepositNotFoundException, NegativeInitialBalanceException, TransactionTypeNotFoundException, IOException {
+    public String calculate(List serverAttributeList, TreeMap depositMap, Transaction transaction) throws InitialBalanceBiggerThanUpperBoundException, DepositNotFoundException, NegativeInitialBalanceException, TransactionTypeNotFoundException, IOException, ParseException {
+        String outLogPath = (String) serverAttributeList.get(1);
+        LogHandler logHandler = new LogHandler(outLogPath);
+        BigDecimal newInitialBalance;
         String depositMapKey;
         String transactionType = transaction.getTransactionType();
         depositMapKey = findDeposit(depositMap, transaction);
@@ -93,10 +96,11 @@ public class Deposit implements Serializable {
             throw new TransactionTypeNotFoundException("transactionType does not exist!");
         synchronized (this) {
             if (transactionType.equals("deposit")) {
-
-                calculateDeposit(depositMap, depositMapKey, transaction);
+                newInitialBalance = calculateDeposit(depositMap, depositMapKey, transaction);
+                logHandler.writeToLogFile("result of deposit for transaction id :" + transaction.getTransactionId() + "and depositId :" + transaction.getDeposit() + "is :" + String.valueOf(newInitialBalance));
             } else if (transaction.getTransactionType().equals("withdraw")) {
-                calculateWithdraw(depositMap, depositMapKey, transaction);
+                newInitialBalance = calculateWithdraw(depositMap, depositMapKey, transaction);
+                logHandler.writeToLogFile("result of deposit for transaction id :" + transaction.getTransactionId() + "and depositId :" + transaction.getDeposit() + "is :" + String.valueOf(newInitialBalance));
             }
         }
         return "successful";

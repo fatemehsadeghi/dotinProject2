@@ -18,17 +18,16 @@ import java.util.Map;
 import java.util.TreeMap;
 
 
-public class Terminal {
-    private Integer serverPort;
+public class Terminal extends Thread {
     private List<String> logMessageList = new ArrayList<String>();
-    private LogHandler logHandler = new LogHandler();
+
 
     public static void main(String[] args) {
         try {
             String terminalName = "terminal";
             String responseFile = "response";
             Terminal terminalSocket = new Terminal();
-            terminalSocket.run(terminalName ,responseFile);
+            terminalSocket.run(terminalName, responseFile);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParserConfigurationException e) {
@@ -44,18 +43,20 @@ public class Terminal {
         }
     }
 
-   public void run(String terminalName, String responseFile) throws IOException, SAXException, ParserConfigurationException, ClassNotFoundException, InterruptedException, TransformerException {
+    public void run(String terminalName, String responseFile) throws IOException, SAXException, ParserConfigurationException, ClassNotFoundException, InterruptedException, TransformerException {
+        Thread.sleep(1000);
         ArrayList<String> terminalAttributeList = new ArrayList<String>();
         ObjectOutputStream objectOutputStream;
         ObjectInputStream objectInputStream;
-
         XmlHandler xmlHandler = new XmlHandler();
         List transactionList = xmlHandler.parseXmlFile(terminalAttributeList, terminalName);
         int transactionSize = transactionList.size();
-       // String terminalId = terminalAttributeList.get(0);
-     //   String terminalType = terminalAttributeList.get(1);
-     //   String localhost = terminalAttributeList.get(2);
-        serverPort = Integer.parseInt(terminalAttributeList.get(3));
+        String terminalId = terminalAttributeList.get(0);
+        String terminalType = terminalAttributeList.get(1);
+        String localhost = terminalAttributeList.get(2);
+        Integer serverPort = Integer.parseInt(terminalAttributeList.get(3));
+        String outLog = terminalAttributeList.get(4);
+        LogHandler logHandler = new LogHandler(outLog);
         Map<String, String> resultMap = new TreeMap<String, String>();
         Socket terminalSocket;
         terminalSocket = new Socket("10.20.15.160", serverPort);
@@ -63,10 +64,12 @@ public class Terminal {
         objectOutputStream.writeObject(transactionSize);
         String logMessage;
         for (Object transactionObject : transactionList) {
-            logMessage = "client is connecting!";
+            logMessage = "client : " + terminalId + terminalType + "is connecting to server port and ip :" + serverPort + localhost + "";
             logMessageList.add(logMessage);
+            logHandler.writeToLogFile(logMessage);
             System.out.println("Sending request to Socket Server");
             logMessage = "Sending request to Socket Server";
+            logHandler.writeToLogFile(logMessage);
             logMessageList.add(logMessage);
             Transaction transaction = (Transaction) transactionObject;
             objectOutputStream.writeObject(transaction);
@@ -74,14 +77,16 @@ public class Terminal {
             objectInputStream = new ObjectInputStream(terminalSocket.getInputStream());
             String message = (String) objectInputStream.readObject();
             System.out.println("Message from server is : " + message);
-            logMessageList.add(logMessage);
+            logHandler.writeToLogFile("result of calculate for transaction id : " + transaction.getTransactionId() + "\t" + "and deposit id :" + transaction.getDeposit() + "\t" + "is " + message);
+            logMessageList.add("result of calculate for transaction id : " + transaction.getTransactionId() + "\t" + "and deposit id :" + transaction.getDeposit() + "\t" + "is " + message);
             resultMap.put(transaction.getTransactionId(), message);
-            Thread.sleep(3000);
+            Thread.sleep(4000);
         }
         XmlWriter xmlWriter = new XmlWriter();
         xmlWriter.saveTransactionResult((TreeMap) resultMap, responseFile);
         logMessage = "write to XML File";
         logMessageList.add(logMessage);
+        logHandler.writeToLogFile(logMessage);
         for (String aLogMessageList : logMessageList) {
             logHandler.writeToLogFile(aLogMessageList);
         }

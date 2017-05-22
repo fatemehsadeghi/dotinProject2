@@ -5,13 +5,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import transaction.Transaction;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +48,5 @@ public class XmlHandler  {
             }
         }
         return transactionList;
-    }
-    public static void main(String args[]) throws  Exception{
-        ArrayList <String> s = new ArrayList<String>();
-        XmlHandler xmlHandler = new XmlHandler();
-        String terminalName=null;
-        xmlHandler.parseXmlFile(s , terminalName);
     }
 }

@@ -20,3 +20,124 @@
         <result>successful</result>
     </transaction>
 </Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>initial balance is less than amount of withdraw</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
