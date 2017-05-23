@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6036b2ad-620b-4158-a9fe-adf0c19773af" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/response.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/terminal.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/response.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/terminal.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/deposit/Deposit.class" afterPath="$PROJECT_DIR$/target/classes/deposit/Deposit.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/network/BankSocketServer$1.class" afterPath="$PROJECT_DIR$/target/classes/network/BankSocketServer$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/network/BankSocketServer.class" afterPath="$PROJECT_DIR$/target/classes/network/BankSocketServer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/network/Terminal.class" afterPath="$PROJECT_DIR$/target/classes/network/Terminal.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/deposit/Deposit.java" afterPath="$PROJECT_DIR$/src/main/java/deposit/Deposit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/network/BankSocketServer.java" afterPath="$PROJECT_DIR$/src/main/java/network/BankSocketServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/network/Terminal.java" afterPath="$PROJECT_DIR$/src/main/java/network/Terminal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/response1.xml" afterPath="$PROJECT_DIR$/src/main/resources/response1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/terminal1.xml" afterPath="$PROJECT_DIR$/src/main/resources/terminal1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/response1.xml" afterPath="$PROJECT_DIR$/target/classes/response1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/terminal1.xml" afterPath="$PROJECT_DIR$/target/classes/terminal1.xml" />
     </list>
@@ -908,7 +899,7 @@
       <workItem from="1495335218938" duration="22331000" />
       <workItem from="1495361345987" duration="3616000" />
       <workItem from="1495419213347" duration="22945000" />
-      <workItem from="1495506929061" duration="3738000" />
+      <workItem from="1495506929061" duration="3860000" />
     </task>
     <task id="LOCAL-00001" summary="edit name of parameters">
       <created>1494656669769</created>
@@ -973,11 +964,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495438764798</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="final edit">
+      <created>1495511780013</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1495511780013</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144169000" />
+    <option name="totallyTimeSpent" value="144291000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1035,7 +1033,8 @@
     <MESSAGE value="edit XmlWriter Class" />
     <MESSAGE value="edit multi threading" />
     <MESSAGE value="edit terminal" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit terminal" />
+    <MESSAGE value="final edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="final edit" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.837963" />
   </component>
   <component name="XDebuggerManager">
