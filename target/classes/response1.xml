@@ -163,3 +163,69 @@
         <result>successful</result>
     </transaction>
 </Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>successful</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>successful</result>
+    </transaction>
+</Transactions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Transactions>
+    <transaction>
+        <transactionId>1</transactionId>
+        <result>transaction was successful and new initial balance is 50</result>
+    </transaction>
+    <transaction>
+        <transactionId>2</transactionId>
+        <result>transaction was successful and new initial balance is 4000</result>
+    </transaction>
+</Transactions>

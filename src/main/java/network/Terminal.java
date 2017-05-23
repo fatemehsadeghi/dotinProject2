@@ -24,8 +24,8 @@ public class Terminal  {
 
     public static void main(String[] args) {
         try {
-            String terminalName = "terminal";
-            String responseFile = "response";
+            String terminalName = "terminal0";
+            String responseFile = "response0";
             Terminal terminalSocket = new Terminal();
             terminalSocket.run(terminalName, responseFile);
         } catch (IOException e) {
@@ -44,7 +44,6 @@ public class Terminal  {
     }
 
     public void run(String terminalName, String responseFile) throws IOException, SAXException, ParserConfigurationException, ClassNotFoundException, InterruptedException, TransformerException {
-        Thread.sleep(1000);
         ArrayList<String> terminalAttributeList = new ArrayList<String>();
         ObjectOutputStream objectOutputStream;
         ObjectInputStream objectInputStream;
@@ -59,11 +58,11 @@ public class Terminal  {
         LogHandler logHandler = new LogHandler(outLog);
         Map<String, String> resultMap = new TreeMap<String, String>();
         Socket terminalSocket;
-        terminalSocket = new Socket("10.20.15.160", serverPort);
-        objectOutputStream = new ObjectOutputStream(terminalSocket.getOutputStream());
-        objectOutputStream.writeObject(transactionSize);
         String logMessage;
         for (Object transactionObject : transactionList) {
+            terminalSocket = new Socket("10.20.15.160", serverPort);
+            objectOutputStream = new ObjectOutputStream(terminalSocket.getOutputStream());
+            objectOutputStream.writeObject(terminalId);
             logMessage = "client : " + terminalId + terminalType + "is connecting to server port and ip :" + serverPort + localhost + "";
             logMessageList.add(logMessage);
             logHandler.writeToLogFile(logMessage);
@@ -80,16 +79,13 @@ public class Terminal  {
             logHandler.writeToLogFile("result of calculate for transaction id : " + transaction.getTransactionId() + "\t" + "and deposit id :" + transaction.getDeposit() + "\t" + "is " + message);
             logMessageList.add("result of calculate for transaction id : " + transaction.getTransactionId() + "\t" + "and deposit id :" + transaction.getDeposit() + "\t" + "is " + message);
             resultMap.put(transaction.getTransactionId(), message);
-            Thread.sleep(4000);
+            Thread.sleep(3000);
         }
         XmlWriter xmlWriter = new XmlWriter();
         xmlWriter.saveTransactionResult((TreeMap) resultMap, responseFile);
         logMessage = "write to XML File";
         logMessageList.add(logMessage);
         logHandler.writeToLogFile(logMessage);
-      //  for (String aLogMessageList : logMessageList) {
-       //     logHandler.writeToLogFile(aLogMessageList);
-      //  }
     }
 
 }

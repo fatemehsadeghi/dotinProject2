@@ -88,7 +88,7 @@ public class Deposit {
     public String calculate(List serverAttributeList, TreeMap depositMap, Transaction transaction) throws InitialBalanceBiggerThanUpperBoundException, DepositNotFoundException, NegativeInitialBalanceException, TransactionTypeNotFoundException, IOException, ParseException {
         String outLogPath = (String) serverAttributeList.get(1);
         LogHandler logHandler = new LogHandler(outLogPath);
-        BigDecimal newInitialBalance;
+        BigDecimal newInitialBalance=null;
         String depositMapKey;
         String transactionType = transaction.getTransactionType();
         depositMapKey = findDeposit(depositMap, transaction);
@@ -103,7 +103,7 @@ public class Deposit {
                 logHandler.writeToLogFile("result of deposit for transaction id :" + transaction.getTransactionId() + "and depositId :" + transaction.getDeposit() + "is :" + String.valueOf(newInitialBalance));
             }
         }
-        return "successful";
+        return "transaction was successful and new initial balance is "+newInitialBalance+"" ;
     }
 
 }

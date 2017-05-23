@@ -19,10 +19,9 @@ import java.util.TreeMap;
 
 public class BankSocketServer extends Thread {
 
-    private List logList = new ArrayList();
     private Socket socket;
     private TreeMap<String, Deposit> depositMap;
-    private Integer transactionSize;
+    private String terminalId;
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
     private String responseToTerminal;
@@ -59,57 +58,42 @@ public class BankSocketServer extends Thread {
                 public void run() {
                     try {
                         objectInputStream = new ObjectInputStream(socket.getInputStream());
-                        transactionSize = (Integer) objectInputStream.readObject();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
+                        terminalId = (String) objectInputStream.readObject();
+                        Transaction transaction = (Transaction) objectInputStream.readObject();
+                        System.out.println("thread name is :\t " + currentThread().getName() + "\t terminalId is :\t " + terminalId);
+                        System.out.println("transaction is :\t " + transaction.toString());
+                        Deposit deposit = new Deposit();
+                        responseToTerminal = deposit.calculate(serverAttributeList, depositMap, transaction);
+
                     } catch (IOException e) {
                         e.printStackTrace();
+                    } catch (DepositNotFoundException e) {
+                        e.printStackTrace();
+                        responseToTerminal = "this deposit does not exist!";
+                        System.out.println(responseToTerminal);
+                    } catch (exceptions.InitialBalanceBiggerThanUpperBoundException e) {
+                        responseToTerminal = "InitialBalanceBiggerThanUpperBoundException";
+                        System.out.println(responseToTerminal);
+                    } catch (exceptions.NegativeInitialBalanceException e) {
+                        responseToTerminal = "initial balance is less than amount of withdraw";
+                        System.out.println(responseToTerminal);
+                    } catch (exceptions.TransactionTypeNotFoundException e) {
+                        responseToTerminal = "transactionType does not exist!";
+                        System.out.println(responseToTerminal);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
                     }
-                    int i = 0;
-                    while (i < transactionSize) {
-                        try {
-                            Transaction transaction = (Transaction) objectInputStream.readObject();
-                            System.out.println("thread name is : " + currentThread().getName() + "object number is :" + i);
-                            System.out.println("transaction is : " + transaction.toString());
-                            Deposit deposit = new Deposit();
-                            responseToTerminal = deposit.calculate(serverAttributeList, depositMap, transaction);
-                            loggerMessage = "send result to terminal";
-                            logList.add(loggerMessage);
-                            logHandler.writeToLogFile(loggerMessage);
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (DepositNotFoundException e) {
-                            e.printStackTrace();
-                            responseToTerminal = "this deposit does not exist!";
-                            System.out.println(responseToTerminal);
-                        } catch (exceptions.InitialBalanceBiggerThanUpperBoundException e) {
-                            responseToTerminal = "InitialBalanceBiggerThanUpperBoundException";
-                            System.out.println(responseToTerminal);
-                        } catch (exceptions.NegativeInitialBalanceException e) {
-                            responseToTerminal = "initial balance is less than amount of withdraw";
-                            System.out.println(responseToTerminal);
-                        } catch (exceptions.TransactionTypeNotFoundException e) {
-                            responseToTerminal = "transactionType does not exist!";
-                            System.out.println(responseToTerminal);
-                        } catch (ClassNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        try {
-                            assert socket != null;
-                            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-                            objectOutputStream.writeObject(responseToTerminal);
-                            logHandler.writeToLogFile(responseToTerminal);
-                            loggerMessage = "send result to terminal";
-                            logList.add(loggerMessage);
-                            logHandler.writeToLogFile(loggerMessage);
-                        } catch (IOException er) {
-                            er.printStackTrace();
-                        } finally {
-                            i++;
-                        }
+                    try {
+                        assert socket != null;
+                        objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                        objectOutputStream.writeObject(responseToTerminal);
+                        logHandler.writeToLogFile(responseToTerminal);
+                        loggerMessage = "send result to terminal";
+                        logHandler.writeToLogFile(loggerMessage);
+                    } catch (IOException er) {
+                        er.printStackTrace();
                     }
                 }
 
